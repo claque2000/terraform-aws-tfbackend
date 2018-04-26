@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "bucket_tfstates_policy" {
     effect = "Allow"
 
     principals {
-      identifiers = "${var.administrators}"
+      identifiers = ["${var.administrators}"]
       type        = "AWS"
     }
 
@@ -58,7 +58,7 @@ data "aws_iam_policy_document" "bucket_tfstates_policy" {
     effect = "Allow"
 
     principals {
-      identifiers = "${var.users}"
+      identifiers = ["${var.users}"]
       type        = "AWS"
     }
 
