@@ -6,9 +6,13 @@ Module usage:
        bucket_tfstates_name = "terraform-tfstates"
        administrators       = ["arn:aws:iam::123456789012:user/admin"]
        users                = ["arn:aws:iam::123456789012:role/builder","arn:aws:iam::123456789012:user/dev_x"]  
-       tags                 = ["BillIt"]
 
-     }
+      tags {
+        Name    = "TerrifEric One"
+        Env     = "Test"
+        Billing = "Someone Else"
+      }
+    }
 
 
 
