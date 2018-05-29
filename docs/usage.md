@@ -7,7 +7,6 @@ Module usage:
        administrators       = ["arn:aws:iam::123456789012:user/admin"]
        users                = ["arn:aws:iam::123456789012:role/builder","arn:aws:iam::123456789012:user/dev_x"]  
        tags                 = ["BillIt"]
-
      }
 
 
