@@ -1,14 +1,12 @@
 Module usage:
 
      module "tfbackend" {
-       source               = "git::https://github.com/claque2000/mod_tfbackend.git"
-       deploy_region        = "eu-west-1"
+       source               = "github.com/claque2000/mod_tfbackend"
+       deploy_region        = "eu-west-3"
        bucket_tfstates_name = "terraform-tfstates"
        administrators       = ["arn:aws:iam::123456789012:user/admin"]
-       users                = ["arn:aws:iam::123456789012:role/builder","arn:aws:iam::123456789012:user/dev_x"]
-       tags {
-         Environment = "Production"
-       }
+       users                = ["arn:aws:iam::123456789012:role/builder","arn:aws:iam::123456789012:user/dev_x"]  
+       tags                 = ["BillIt"]
      }
 
 
