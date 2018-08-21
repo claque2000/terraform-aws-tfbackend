@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "kms_tfstate_policy" {
 
     principals {
       type        = "AWS"
-      identifiers = ["${var.administrators}"]
+      identifiers = ["${var.administrators}", "${var.users}"]
     }
 
     actions = [
