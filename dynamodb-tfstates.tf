@@ -13,4 +13,8 @@ resource "aws_dynamodb_table" "dynamodb_tfstates" {
     name = "LockID"
     type = "S"
   }
+
+  point_in_time_recovery {
+    enabled = true
+  }
 }
