@@ -1,6 +1,6 @@
 resource "aws_kms_key" "kms_tfstates" {
   description = "Terraform tfstates bucket encryption key"
-  policy      = "${data.aws_iam_policy_document.kms_tfstate_policy.json}"
+  policy      = data.aws_iam_policy_document.kms_tfstate_policy.json
 
   lifecycle {
     prevent_destroy = true
@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "kms_tfstate_policy" {
 
     principals {
       type        = "AWS"
-      identifiers = ["${var.administrators}"]
+      identifiers = [var.administrators]
     }
 
     actions = [
@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "kms_tfstate_policy" {
 
     principals {
       type        = "AWS"
-      identifiers = ["${var.administrators}", "${var.users}"]
+      identifiers = [var.administrators, var.users]
     }
 
     actions = [
@@ -59,5 +59,5 @@ data "aws_iam_policy_document" "kms_tfstate_policy" {
 
 resource "aws_kms_alias" "tfstates" {
   name          = "alias/${var.bucket_tfstates_name}"
-  target_key_id = "${aws_kms_key.kms_tfstates.key_id}"
+  target_key_id = aws_kms_key.kms_tfstates.key_id
 }
