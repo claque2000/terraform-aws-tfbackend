@@ -1,7 +1,8 @@
 Module usage:
 
      module "tfbackend" {
-       source               = "github.com/claque2000/mod_tfbackend"
+       source               = "github.com/claque2000/
+/terraform-aws-tfbackend"
        deploy_region        = "eu-west-3"
        bucket_tfstates_name = "terraform-tfstates"
        administrators       = ["arn:aws:iam::123456789012:user/admin"]

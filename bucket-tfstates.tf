@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucket_tfstates" {
-  bucket = "${var.bucket_tfstates_name}"
+  bucket = var.bucket_tfstates_name
   acl    = "private"
 
   versioning {
@@ -11,18 +11,18 @@ resource "aws_s3_bucket" "bucket_tfstates" {
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        kms_master_key_id = "${aws_kms_key.kms_tfstates.arn}"
+        kms_master_key_id = aws_kms_key.kms_tfstates.arn
         sse_algorithm     = "aws:kms"
       }
     }
   }
 
-  policy = "${data.aws_iam_policy_document.bucket_tfstates_policy.json}"
+  policy = data.aws_iam_policy_document.bucket_tfstates_policy.json
 
-  tags = "${merge(
+  tags = merge(
     map("Name", var.bucket_tfstates_name),
     var.tags
-  )}"
+  )
 
   lifecycle {
     prevent_destroy = true
@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "bucket_tfstates_policy" {
     effect = "Allow"
 
     principals {
-      identifiers = ["${var.administrators}"]
+      identifiers = [var.administrators]
       type        = "AWS"
     }
 
@@ -58,7 +58,7 @@ data "aws_iam_policy_document" "bucket_tfstates_policy" {
     effect = "Allow"
 
     principals {
-      identifiers = ["${var.users}"]
+      identifiers = [var.users]
       type        = "AWS"
     }
 
